@@ -2,7 +2,7 @@ provider "azurerm" {
   features {}
 }
 
-# Використання даних про існуючу групу ресурсів
+# Зчитування існуючої ресурсної групи
 data "azurerm_resource_group" "existing_rg" {
   name = var.resource_group_name
 }
