@@ -1,49 +1,34 @@
 variable "resource_group_name" {
-  description = "Назва вже існуючої групи ресурсів"
+  description = "The name of the existing resource group"
   type        = string
-  default     = "cmtr82c341d6-rg"
-}
-
-variable "location" {
-  description = "Локація ресурсів"
-  type        = string
-  default     = "East US"
 }
 
 variable "storage_account_name" {
-  description = "Назва облікового запису сховища"
+  description = "The name of the storage account"
   type        = string
-  default     = "cmtr82c341d6sa"
 }
 
 variable "vnet_name" {
-  description = "Назва віртуальної мережі"
+  description = "The name of the virtual network"
   type        = string
-  default     = "cmtr82c341d6-vnet"
 }
 
 variable "address_space" {
-  description = "Адресний простір віртуальної мережі"
+  description = "The address space for the virtual network"
   type        = list(string)
-  default     = ["10.0.0.0/16"]
 }
 
 variable "subnet_names" {
-  description = "Назви підмереж"
+  description = "The names of the subnets"
   type        = list(string)
-  default     = ["private", "public"]
 }
 
 variable "subnet_prefixes" {
-  description = "Адресні префікси підмереж"
+  description = "The address prefixes for the subnets"
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 
 variable "tags" {
-  description = "Теги для ресурсів"
+  description = "Tags to apply to resources"
   type        = map(string)
-  default     = {
-    environment = "production"
-  }
 }
