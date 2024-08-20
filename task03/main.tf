@@ -1,5 +1,5 @@
 provider "azurerm" {
-  features = {}
+  features {}
 }
 
 # Створення групи ресурсів (якщо вона не існує)
