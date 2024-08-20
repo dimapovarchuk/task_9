@@ -1,3 +1,7 @@
+output "resource_group_name" {
+  value = data.azurerm_resource_group.existing_rg.name
+}
+
 output "storage_account_name" {
   value = azurerm_storage_account.sa.name
 }
@@ -7,5 +11,5 @@ output "vnet_name" {
 }
 
 output "subnet_names" {
-  value = [for s in azurerm_subnet.subnets : s.name]
+  value = azurerm_subnet.subnets[*].name
 }
