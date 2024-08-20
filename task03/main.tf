@@ -2,19 +2,19 @@ provider "azurerm" {
   features {}
 }
 
-# Зчитування існуючої ресурсної групи
+# Зчитування існуючої групи ресурсів
 data "azurerm_resource_group" "existing_rg" {
   name = var.resource_group_name
 }
 
-# Створення облікового запису сховища
+# Створення облікового запису зберігання
 resource "azurerm_storage_account" "sa" {
   name                     = var.storage_account_name
   resource_group_name      = data.azurerm_resource_group.existing_rg.name
   location                 = data.azurerm_resource_group.existing_rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  tags                     = var.tags
+  tags                     = merge(var.tags, { "owner" = "user" })
 }
 
 # Створення віртуальної мережі
@@ -23,7 +23,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = data.azurerm_resource_group.existing_rg.name
   location            = data.azurerm_resource_group.existing_rg.location
   address_space       = var.address_space
-  tags                = var.tags
+  tags                = merge(var.tags, { "owner" = "user" })
 }
 
 # Створення підмереж
